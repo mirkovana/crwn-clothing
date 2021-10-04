@@ -11,6 +11,33 @@ const config = {
   measurementId: "G-PTG87DZM0W",
 };
 
+export const createUserProfileDocument = async (userAuth, additionalData) => {
+  if (!userAuth) return;
+
+  const userRef = firestore.doc(`users/${userAuth.uid}`);
+  const snapShot = await userRef.get(); //nam pokazuje da li user postoji u bazi ili ne
+
+  if (!snapShot.exists) {
+    //ako snapShot(objekat) ne postoji u bazi uzima podatke o tom objektu
+    const { displayName, email } = userAuth;
+    const createdAt = new Date();
+
+    try {
+      //podatke iz prethodnog koraka upisuje u bazu
+      await userRef.set({
+        displayName,
+        email,
+        createdAt,
+        ...additionalData,
+      });
+    } catch (error) {
+      console.log("error creating user", error.message);
+    }
+  }
+
+  return userRef;
+};
+
 firebase.initializeApp(config);
 
 export const auth = firebase.auth();
