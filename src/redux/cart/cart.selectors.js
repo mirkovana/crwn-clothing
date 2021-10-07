@@ -16,3 +16,8 @@ export const selectCartItemsCount = createSelector(
       0 //0 je pocetna vrednost zbira
     )
 );
+
+export const selectCartHidden = createSelector(
+  [selectCart],
+  (cart) => cart.hidded
+);
