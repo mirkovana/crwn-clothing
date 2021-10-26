@@ -18,4 +18,4 @@ ReactDOM.render(
     </React.StrictMode>
   </Provider>,
   document.getElementById("root")
-);
+); //render - drugi element koji prima menja prvim elementom
