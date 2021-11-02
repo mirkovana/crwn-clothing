@@ -37,6 +37,7 @@ class App extends React.Component {
   }
 
   render() {
+    //exact u Route znaci da putanja mora biti bas takva, bez bilo cega dodatnog
     return (
       <div>
         <Header />
