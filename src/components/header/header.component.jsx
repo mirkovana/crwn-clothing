@@ -42,5 +42,11 @@ const mapStateToProps = createStructuredSelector({
   hidden: selectCartHidden,
 });
 
+//ovako radi
+// const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
+//   currentUser,
+//   hidden,
+// });
+
 export default connect(mapStateToProps)(Header);
 //connect je fja najviseg nivou koja uvek prima dva parametra
